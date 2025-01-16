@@ -1,3 +1,4 @@
+mod ai;
 mod context;
 mod crypto;
 #[cfg(feature = "d1")]
@@ -11,12 +12,14 @@ mod incoming_request_cf_properties;
 #[cfg(feature = "queue")]
 mod queue;
 mod r2;
+mod rate_limit;
 mod schedule;
 mod socket;
 mod tls_client_auth;
 mod version;
 mod websocket_pair;
 
+pub use ai::*;
 pub use context::*;
 pub use crypto::*;
 #[cfg(feature = "d1")]
@@ -30,6 +33,7 @@ pub use incoming_request_cf_properties::*;
 #[cfg(feature = "queue")]
 pub use queue::*;
 pub use r2::*;
+pub use rate_limit::*;
 pub use schedule::*;
 pub use socket::*;
 pub use tls_client_auth::*;
