@@ -163,6 +163,8 @@ pub use worker_sys;
 pub use worker_sys::{console_debug, console_error, console_log, console_warn};
 
 pub use crate::abort::*;
+pub use crate::ai::*;
+pub use crate::analytics_engine::*;
 pub use crate::cache::{Cache, CacheDeletionOutcome, CacheKey};
 pub use crate::context::Context;
 pub use crate::cors::Cors;
@@ -183,6 +185,7 @@ pub use crate::hyperdrive::*;
 #[cfg(feature = "queue")]
 pub use crate::queue::*;
 pub use crate::r2::*;
+pub use crate::rate_limit::RateLimiter;
 pub use crate::request::{FromRequest, Request};
 pub use crate::request_init::*;
 pub use crate::response::{EncodeBody, IntoResponse, Response, ResponseBody, ResponseBuilder};
@@ -194,6 +197,8 @@ pub use crate::version::*;
 pub use crate::websocket::*;
 
 mod abort;
+mod ai;
+mod analytics_engine;
 mod cache;
 mod cf;
 mod context;
@@ -218,6 +223,7 @@ mod hyperdrive;
 #[cfg(feature = "queue")]
 mod queue;
 mod r2;
+mod rate_limit;
 mod request;
 mod request_init;
 mod response;

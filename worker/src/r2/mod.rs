@@ -180,11 +180,12 @@ impl Object {
         }
     }
 
-    pub fn size(&self) -> u32 {
-        match &self.inner {
+    pub fn size(&self) -> u64 {
+        let size = match &self.inner {
             ObjectInner::NoBody(inner) => inner.size().unwrap(),
             ObjectInner::Body(inner) => inner.size().unwrap(),
-        }
+        };
+        size.round() as u64
     }
 
     pub fn etag(&self) -> String {
@@ -280,7 +281,7 @@ pub struct ObjectBody<'body> {
     inner: &'body EdgeR2ObjectBody,
 }
 
-impl<'body> ObjectBody<'body> {
+impl ObjectBody<'_> {
     /// Reads the data in the [Object] via a [ByteStream].
     pub fn stream(self) -> Result<ByteStream> {
         if self.inner.body_used()? {
